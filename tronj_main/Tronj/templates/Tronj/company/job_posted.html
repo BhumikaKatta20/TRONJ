@@ -1,0 +1,183 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block bodddy %}
+
+<body style="background-image: url( {{ baseim }}/{{ backgrd }});background-size: cover;">
+  {% endblock %}
+{% block head %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/sub/edit.css' %}" />
+
+   <style>
+       .nav_iconn{
+           color: white;
+           font-size:25px;
+           font-family: "Baskerville Old Face";
+            padding:10px 10px 10px 10px;
+       }
+   .op{
+       width:250px;
+       margin:10px 10px 10px 10px;
+       height:50px;
+   }
+   .tx{
+       width:480px;
+        margin:5px 5px 5px 5px;
+       height:50px;
+   }
+    .error{
+       font-size:20px;
+       color:#a21309;
+        padding-left:25px;
+   }
+
+   .labe{
+       font-size:25px;
+   }
+   .labee{
+       font-size:20px;
+   }
+   </style>
+{% endblock %}
+
+{% block content%}
+
+<div class="jumbotron"  style="background-color:transparent;margin-left:10%;margin-right:10%;margin-top:80px;height:1200px;" >
+    <form method="get" action="Del_job" >
+        <div style="color: darkgreen;padding-left:20px;padding-top:20px;">
+            <input name="Company_name" class="btn-outline-light;" style="border-width: 10px; border-color: darkmagenta;font-family: 'Baskerville Old Face';font-size:70px;padding-left:25px;" type="textbox" value="{{c.Company_name}}" readonly>
+          </div>
+
+    
+<hr><br><br>
+
+         <div class="row">
+             <div class="col-md-6" >
+
+                      <div class="row">
+         <div class="col-md-6" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;"> Job ID number:</div>
+    <div class="col-md-6"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;" type="textbox" name="ida" value="{{c.id}}" readonly></div>
+</div>
+<br>
+                 <div>
+                     <h3 style="font-size:30px; font-family: 'Baskerville Old Face';font-weight: bold;">About the company</h3>
+                     <p class="btn-outline-light btn-lg" style="font-size:20px; font-family: 'Baskerville Old Face';">{{ c.about_the_company }}</p>
+                        </div>
+                 <div>
+                     <h3 style="font-size:30px; font-family: 'Baskerville Old Face';font-weight: bold;">Job Description </h3>
+                     <p class="btn-outline-light btn-lg" style="font-size:20px; font-family: 'Baskerville Old Face';">{{ c.jobdescription }}</p>
+                        </div>
+                      <div class="row">
+         <div class="col-md-6" style="font-size:30px; font-family: 'Baskerville Old Face';font-weight: bold;"> Skills Required:</div>
+    <div class="col-md-6"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;" type="textbox" name="Skills_Required" value="{{c.Skills_Required}}" readonly></div>
+</div>
+<br>
+<div class="row">
+         <div class="col-md-12" style="font-size:30px; font-family: 'Baskerville Old Face';font-weight: bold;"> <u>Experience</u></div></div>
+         <div class="row">
+         <div class="col-md-6" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;"> Language:</div>
+    <div class="col-md-6"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;" type="textbox" name="Skills_Required" value="{{c.years_of_experience}}" readonly></div>
+</div>
+<br>
+                      <div class="row">
+         <div class="col-md-6" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;"> Years:</div>
+    <div class="col-md-6"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;" type="textbox" name="Skills_Required" value="{{c.experienced_programming_langauage}}" readonly></div>
+</div>
+<br>
+                 <div class="row">
+         <div class="col-md-6" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;"> Stippend/Salary:</div>
+    <div class="col-md-6"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;" type="textbox" name="stipend" value="{{c.stipend}}" readonly></div>
+</div>
+<br>
+             
+                 <div class="row">
+    <div  class="col-md-6" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">Job Type</div>
+    <div class="col-md-6"><input class="btn-outline-light btn-lg" style="border-color: darkmagenta;border:none;" type="textbox" name="job_type" value="{{c.job_type}}" readonly></div>
+</div><br>
+
+        <div class="row">
+    <div class="col-md-6" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">Start of intern:</div>
+    <div class="col-md-6"><input class="btn-outline-light btn-lg" style="border-color: darkmagenta;border:none;" type="textbox" name="Start_of_intern" value="{{c.Start_of_intern}}" readonly></div>
+</div><br>
+
+         <div class="row">
+    <div class="col-md-6" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">CEmail:</div>
+    <div class="col-md-6"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;" type="textbox" name="CEmail" value="{{c.CEmail}}" readonly></div>
+         </div><br>
+
+             </div>
+                <div class="col-md-6">
+               <div class="row">
+         <div class="col-md-8" style="font-size:30px; font-family: 'Baskerville Old Face';font-weight: bold;"><u> Skill Score</u></div></div>
+          
+           <div class="row">
+         <div class="col-md-8" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;"> Python Programming</div>
+    <div class="col-md-3"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;text-align: center ;" type="textbox" name="stipend" value="{{c.python}}%" readonly></div>
+        </div>
+        <br>
+             
+                 <div class="row">
+    <div  class="col-md-8" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">C# Programming</div>
+    <div class="col-md-3"><input class="btn-outline-light btn-lg" style="border-color: darkmagenta;border:none;text-align: center ;" type="textbox" name="job_type" value="{{c.Csharp}}%" readonly></div>
+</div><br>
+<div class="row">
+         <div class="col-md-8" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">Web Designing</div>
+    <div class="col-md-3"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;text-align: center ;" type="textbox" name="stipend" value="{{c.web}}%" readonly>
+    </div>
+        </div>
+        <br>
+             
+                 <div class="row">
+    <div  class="col-md-8" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">C Programming</div>
+    <div class="col-md-3"><input class="btn-outline-light btn-lg" style="border-color: darkmagenta;border:none;text-align: center ;" type="textbox" name="job_type" value="{{c.C}}%" readonly></div>
+</div><br>
+
+<div class="row">
+         <div class="col-md-8" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">java Programming</div>
+    <div class="col-md-3"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;text-align: center ;" type="textbox" name="stipend" value="{{c.java}}%" readonly>
+    </div>
+        </div>
+        <br>
+  <div class="row">
+    <div  class="col-md-8" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">C++ Programming</div>
+    <div class="col-md-3"><input class="btn-outline-light btn-lg" style="border-color: darkmagenta;border:none;text-align: center ;" type="textbox" name="job_type" value="{{c.Cadvance}}%" readonly></div>
+</div><br>
+
+
+<div class="row">
+         <div class="col-md-8" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">.netFreame Programming</div>
+    <div class="col-md-3"><input class="btn-outline-light btn-lg" style="border:none;border-color: darkmagenta;text-align: center ;" type="textbox" name="stipend" value="{{c.netframe}}%" readonly>
+    </div>
+        </div>
+        <br>
+  <div class="row">
+    <div  class="col-md-8" style="font-size:23px; font-family: 'Baskerville Old Face';font-weight: bold;">PHP Programming</div>
+    <div class="col-md-3"><input class="btn-outline-light btn-lg" style="border-color: darkmagenta;border:none;text-align: center ;" type="textbox" name="job_type" value="{{c.PHP}}%" readonly></div>
+</div><br>
+<div class="row">
+  <div class="col-md-3">
+                    <h3 style="font-size:30px; font-family: 'Baskerville Old Face';font-weight: bold;">Questions</h3>
+                  </div>
+                  <div class="col-md-9">
+                 <input class="btn-outline-light btn-lg" style="width:90%;border:none;" name="Question1" value="{{c.Question1}}" type="textbox" readyonly>
+                  <input class="btn-outline-light btn-lg" style="width:90%;border:none;" name="Question2" value="{{c.Question2}}" type="textbox" readyonly>
+                  <input class="btn-outline-light btn-lg" style="width:90%;border:none;" name="Question3" value="{{c.Question3}}" type="textbox" readyonly>
+                </div></div>
+                  <div class="container form-check-inline" style="margin:30px 10px 10px 70%;">
+                <button type="submit" class="btn btn-danger btn-lg">Delete</button></div>
+         </div>
+             </div>
+</form>
+         </div>
+
+
+
+
+
+
+
+
+{{Marks}} {{Answer}} {{Answ}}
+
+{% endblock %}

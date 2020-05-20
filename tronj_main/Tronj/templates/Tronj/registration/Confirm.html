@@ -1,0 +1,194 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+    <title>TRONJ-My Account</title>
+
+{% block head %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/sub/Profile.css' %}" />
+
+   <style>
+       .nav_iconn{
+           color: white;
+           font-size:25px;
+           font-family: "Baskerville Old Face";
+            padding:10px 10px 10px 10px;
+       }
+   </style>
+{% endblock %}
+<!-- ***** Header Area Start ***** -->
+{% block bodddy %}
+<body style="background-image: url({% static 'app/images/back10.jpg'%});background-size: cover;">
+{% endblock %}
+{% block nav %}
+{% if user.is_authenticated %}
+<!-- ***** Header Area Start ***** -->
+
+        <br><br><br><br><br>
+<header>
+
+<nav>
+    <div class="sidebar-wrapper" style="margin: 10px 10% 10px 10%;background-color: whitesmoke;border-radius:10px">
+        <ul class="nav" >
+
+          <li class="nav-item active ">
+            <a class="nav-link" href="{% url 'edit_Profile' %}">
+              <i class="material-icons">person</i>
+              <p>Presonal</p>
+            </a>
+          </li>
+        {% if user.is_staff %}
+                {% else %}
+        <li class="nav-item ">
+            <a class="nav-link" href={% url 'Edu_Content' %}>
+              <i class="material-icons">import_contacts</i>
+
+              <p>Education</p>
+
+            </a>
+          </li>
+        {% endif %}
+        {% if user.is_staff %}
+        {% else %}
+        <li class="nav-item ">
+            <a class="nav-link" href="{% url 'Expre_Content' %}">
+              <i class="material-icons">book</i>
+              <p>Experience</p>
+            </a>
+          </li>
+        {% endif %}
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'email_verify' %}">
+              <i class="material-icons">edit</i>
+              <p>Reset Password</p>
+            </a>
+          </li>
+           <li class="nav-item ">
+               {% if user.is_staff %}
+            <a class="nav-link nav-right" href='Capplication'>
+ {% else %}
+                <a class="nav-link nav-right" href='Eapplication'>
+{% endif %}
+
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'logout' %}">
+              <i class="material-icons">arrow_right_alt</i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+
+</nav>
+</header>
+{% else %}
+{% endif %}
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="content" style="margin-top:10px;margin-left:20%;margin-right:20%; ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Fill The Answers</h4>
+                  <p class="card-category"></p>
+                </div>
+                <div class="card-body" style="padding-top:5%;padding-left:5%;" >
+                    <form action="Confirm" method="get" style="padding:5% 10% 10% 5%;">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          <label class="bmd-label-floating" style="font-size:20px;">Enter the new password</label>
+                          <input type="password" class="form-control" name="entered"   >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          <label class="bmd-label-floating" style="font-size:20px;">Re-enter ther password</label>
+                          <input type="password" class="form-control" name="re_entered"   >
+                        </div>
+                      </div>
+                    </div>
+                    <h3 style="color:red"> {{ msg }}</h3>
+
+
+                    <button type="submit" class="btn btn-primary pull-right" >Send</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% else %}
+    <br><br><br><br><br>
+<div class="content" style="margin-top:10px;margin-left:20%;margin-right:20%; ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Fill The Answers</h4>
+                  <p class="card-category"></p>
+                </div>
+                <div class="card-body" style="padding-top:5%;padding-left:5%;" >
+                    <h2>{{ msg }}</h2>
+                    <form action="fConfirm" method="get" style="padding:2% 10% 10% 5%;">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="form-group">
+                              <input type="text" class="form-control" name="username" value="{{ username }}" readonly style="font-size:25px;font-family: 'Baskerville Old Face'"  >
+                          <label class="bmd-label-floating" style="font-size:20px;">Enter the new password</label>
+                          <input type="password" class="form-control" name="entered"   >
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          <label class="bmd-label-floating" style="font-size:20px;">Re-enter ther password</label>
+                          <input type="password" class="form-control" name="re_entered"   >
+                        </div>
+                      </div>
+                    </div>
+
+  <b style="color:red"> {{ msg }}</b>
+
+                    <button type="submit" class="btn btn-primary pull-right" >Send</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endif %}
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,489 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block bodddy %}
+<body style="background-image: url({% static 'app/images/back10.jpg'%});background-size: cover;">
+{% endblock %}
+
+    <title>TRONJ-My Account</title>
+{% block head %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/sub/Profile.css' %}" />
+   <style>
+
+   .edu_dis{
+       font-size:20px;
+    width: 20%;
+       margin-top:10px;
+       margin-bottom:5px;
+   }
+       .headsub{
+           font-size:22px;
+           font-family: "Baskerville Old Face";
+
+       }
+       .labe{
+       font-size:20px;
+   }
+   .labee{
+       font-size:16px;
+   }
+    .headcont{
+        font-size:18px;
+    }
+   .headsubb{
+       width: 20%;
+           font-size:23px;
+           font-family: "Baskerville Old Face";
+            padding:10px 10px 10px 10px;
+       }
+   </style>
+{% endblock %}
+<!-- ***** Header Area Start ***** -->
+   {% block nav %}
+<!-- ***** Header Area Start ***** -->
+        <br><br><br><br><br>
+<header>
+
+<nav>
+    <div class="sidebar-wrapper" style="margin: 10px 10% 10px 10%;background-color: whitesmoke;border-radius:10px">
+        <ul class="nav" >
+
+          <li class="nav-item active ">
+            <a class="nav-link btn-link" href="{% url 'edit_Profile' %}">
+              <i class="material-icons">person</i>
+              <p>Presonal</p>
+            </a>
+          </li>
+        {% if user.is_staff %}
+                {% else %}
+        <li class="nav-item ">
+            <a class="nav-link btn-link" href={% url 'Edu_Content' %}>
+              <i class="material-icons">import_contacts</i>
+
+              <p>Education</p>
+
+            </a>
+          </li>
+        {% endif %}
+        {% if user.is_staff %}
+        {% else %}
+        <li class="nav-item ">
+            <a class="nav-link btn-link" href="{% url 'Expre_Content' %}">
+              <i class="material-icons">book</i>
+              <p>Experience</p>
+            </a>
+          </li>
+        {% endif %}
+          <li class="nav-item ">
+            <a class="nav-link btn-link" href="{% url 'email_verify' %}">
+              <i class="material-icons">edit</i>
+              <p>Reset Password</p>
+            </a>
+          </li>
+           <li class="nav-item ">
+               {% if user.is_staff %}
+            <a class="nav-link nav-right btn-link" href='Capplication'>
+ {% else %}
+                <a class="nav-link nav-right btn-link" href='Eapplication'>
+{% endif %}
+
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link btn-link" href="{% url 'logout' %}">
+              <i class="material-icons">arrow_right_alt</i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+
+</nav>
+</header>
+
+{% endblock %}
+{% block content%}
+{% if user.is_staff %}
+    <div class="content" style="margin-top:10px;margin-left:8%; ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">My Profile</h4>
+                  <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                        <div class="col-md-2"> <h3 class="headsub">User name: </h3></div><div class="col-md-2"><h3 class="headcont"> {{ user }}</h3></div>
+                        <div class="col-md-1"> </div>
+                        <div class="col-md-2"><h3 class="headsub">Address</h3> </div><div class="col-md-4"><h3 class="headcont">{{ Fdata.Address }}</h3> </div>
+                    </div><div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">First Name: </h3></div><div class="col-md-2"><h3 class="headcont"> {{ user.first_name }}</h3></div>
+                      <div class="col-md-1"> </div>
+                        <div class="col-md-2"><h3 class="headsub">City</h3> </div><div class="col-md-4"><h3 class="headcont">{{ Fdata.city }}</h3> </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">Last Name: </h3></div><div class="col-md-2"><h3 class="headcont"> {{ user.last_name }}</h3></div>
+                          <div class="col-md-1"> </div>
+                        <div class="col-md-2"><h3 class="headsub">State</h3> </div><div class="col-md-4"><h3 class="headcont">{{ Fdata.State }}</h3> </div>
+                        </div><div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">Email: </h3></div><div class="col-md-3"><h3 class="headcont"> {{ user.email }}</h3></div>
+                        <div class="col-md-2"><h3 class="headsub">Postal Code</h3> </div><div class="col-md-4"><h3 class="headcont">{{ Fdata.Postal_code }}</h3> </div>
+                      </div><div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">Phone Number</h3></div><div class="col-md-2"><h3 class="headcont"> {{ Fdata.Phone_number }}</h3></div>
+                      <div class="col-md-1"> </div>
+                        <div class="col-md-2"><h3 class="headsub">State</h3> </div><div class="col-md-4"><h3 class="headcont">{{ Fdata.State }}</h3> </div>
+                      </div>
+                    <hr>
+                       <div class="row">
+                           <div style="padding-left:5%;padding-right: 10%; width:80%; "> <h1>About the Company</h1><br><h3 class="headcont"> {{ Fdata.about_company}}</h3></div>
+                       </div>
+                        <div class="row" style=" float:right;margin-right:50px;">
+
+                         
+                          <a href="del_user" class="btn-link" style="color:red;font-size:20px;">Delete Your account</a>
+                        </div>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% else %}
+<div class="content" style="margin-top:10px;margin-left:8%; ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">My Profile</h4>
+                  <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                        <div class="col-md-2"> <h3 class="headsub">User name: </h3></div><div class="col-md-2"><h3 class="headcont"> {{ user }}</h3></div>
+                        <div class="col-md-1"> </div>
+                        <div class="col-md-2"><h3 class="headsub">Address</h3> </div><div class="col-md-4">
+                            {% if AD > 1 %}
+                            <h3 class="headcont">{{ Fdata.Address }}</h3>
+                            {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill details</h3>
+                           {% endif %}
+                           </div>
+                    </div><div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">First Name: </h3></div><div class="col-md-2"><h3 class="headcont"> {{ user.first_name }}</h3></div>
+                      <div class="col-md-1"> </div>
+                        <div class="col-md-2"><h3 class="headsub">City</h3>
+                        </div><div class="col-md-4">
+                            {% if CO > 1 %}
+                            <h3 class="headcont">{{ Fdata.city }}</h3>
+                            {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill details</h3>
+                           {% endif %}
+                           </div>
+                        </div>
+                      <div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">Last Name: </h3></div><div class="col-md-2"><h3 class="headcont"> {{ user.last_name }}</h3></div>
+                          <div class="col-md-1"> </div>
+                        <div class="col-md-2"><h3 class="headsub">State</h3> </div><div class="col-md-4">
+                            {% if STA > 1 %}
+                            <h3 class="headcont">{{ Fdata.State }}</h3>
+                             {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill details</h3>
+                           {% endif %}
+                           </div>
+                        </div><div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">Email: </h3></div><div class="col-md-3"><h3 class="headcont"> {{ user.email }}</h3></div>
+                        <div class="col-md-2"><h3 class="headsub">Postal Code</h3> </div><div class="col-md-4">
+                            {% if PCO > 1 %}
+                            <h3 class="headcont">{{ Fdata.Postal_code }}</h3>
+                             {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill details</h3>
+                           {% endif %}
+                           </div>
+                      </div><div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">Father Name</h3></div><div class="col-md-2">
+                            {% if FN > 1 %}
+                          <h3 class="headcont"> {{ Fdata.Father_Name }}</h3>
+                          {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill details</h3>
+                           {% endif %}
+                           </div>
+                      <div class="col-md-1"> </div>
+                        <div class="col-md-2"><h3 class="headsub">Phone Number</h3> </div><div class="col-md-4">
+                            {% if PN > 1 %}
+                            <h3 class="headcont">{{ Fdata.Phone_number }}</h3>
+                            {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill details</h3>
+                           {% endif %}
+                           </div>
+
+                      </div><div class="row">
+                      <div class="col-md-2"> <h3 class="headsub">Date of Birth </h3></div><div class="col-md-2">
+                            {% if DA > 1 %}
+                          <h3 class="headcont"> {{ Fdata.Date_of_birth }}</h3>
+                           {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill details</h3>
+                           {% endif %}
+                           </div>
+                      <div class="col-md-1"> </div>
+
+                      </div>
+
+
+                        <br>
+                      <div class="row">
+                           <div style="padding-left:5%;padding-right: 10%; "> <h2>Carrer Objective</h2><br>
+                           {% if CO > 1 %}
+                           <h3 class="headcont"> {{ Fdata.Carrer_Objective}}</h3>
+                           {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill your Carrer_Objective</h3>
+                           {% endif %}
+                           </div>
+                       </div><br><hr>
+                      <div class="row">
+                           <div style="padding-left:5%;padding-right: 10%; "> <h2>Your Strength</h2><br>
+                           {% if ST > 1 %}
+                           <h3 class="headcont"> {{ Fdata.Strength}}</h3>
+                           {% else %}
+                           <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please fill your Strength</h3>
+                           {% endif %}
+                           </div>
+                       </div><br><hr>
+                      <h2>Education Qualification</h2><br>
+
+
+                    {% if Fdataa.SSLC_Percentage > 0 %}
+                    <div class="row">
+
+                        <div  class="col-md-6">
+                        <p style="font-size:30px;color:#341a79; font-family: 'Times New Roman'">SSLC</p></div>
+                    </div>
+                    <div class="row">
+
+                          <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">School Name</label>
+                          <input class="form-control labee" value="{{ Fdataa.SSLC_name }}" name="SSLC_name" readonly>
+                        </div>
+                      </div>
+                         <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="bmd-label-floating labe">Board</label>
+                            <input type="text" class="form-control labee" value="{{ Fdataa.SSLC_board }}" name="SSLC_board" readonly>
+                        </div></div>
+                          <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Percentage</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.SSLC_Percentage }}" name="SSLC_Percentage" readonly>
+                        </div></div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Passed out year</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.SSLC_passed_year }}" name="SSLC_passed_year" readonly>
+                        </div>
+                      </div>
+                              </div>
+                    {% else %}
+                     <div class="row">
+
+                        <div  class="col-md-6">
+                        <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please Fill your SSLC details</h3></div>
+                    </div>
+
+                    {% endif %}
+                    {% if Fdataa.PUC_Percentage > 0 %}
+                    <div class="row">
+
+                        <div  class="col-md-6">
+                        <p style="font-size:30px;color:#341a79; font-family: 'Times New Roman'">PUC</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">PUC IN</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.PUC_IN }}" name="PUC_IN" readonly>
+                        </div>
+                      </div>
+
+                          <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Collage Name</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.PUC_name }}" name="PUC_name" readonly>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="row">
+                         <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="bmd-label-floating  labe">Board</label>
+                            <input type="text" class="form-control labee" value="{{ Fdataa.PUC_board }}" name="PUC_board" readonly>
+                        </div></div>
+                          <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Percentage</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.PUC_Percentage }}" name="PUC_Percentage" readonly>
+                        </div></div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Passed out year</label>
+                          <input type="text" class="form-control labee"  value="{{ Fdataa.PUC_passed_year }}" name="PUC_passed_year" readonly>
+                        </div>
+                      </div></div>
+                     {% else %}
+                     <div class="row">
+
+                        <div  class="col-md-6">
+                        <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please Fill your PUC details</h3></div>
+                    </div>
+
+                    {% endif %}
+                    {% if Fdataa.Graduation_Percentage > 0 %}
+                    <div class="row">
+                        <div  class="col-md-6">
+                        <p style="font-size:40px;color:#341a79; font-family: 'Times New Roman'">Graduation</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Graduation IN</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.Graduation_IN }}" name="Graduation_IN" readonly>
+                        </div>
+                      </div>
+
+                          <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Collage Name</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.Graduation_name }}" name="Graduation_name" readonly>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="row">
+                         <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="bmd-label-floating labe">Board</label>
+                            <input type="text" class="form-control labee" value="{{ Fdataa.Graduation_board }}" name="Graduation_board" readonly>
+                        </div></div>
+                          <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Percentage</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.Graduation_Percentage }}" name="Graduation_Percentage" readonly>
+                        </div></div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Passed out year</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.Graduation_passed_year }}" name="Graduation_passed_year" readonly>
+                        </div>
+                      </div></div>
+                      {% else %}
+                     <div class="row">
+
+                        <div  class="col-md-6">
+                        <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please Fill your Graduation details</h3></div>
+                    </div>
+
+                    {% endif %}
+                    {% if Fdataa.PostGraduation_Percentage > 0 %}
+                      <div class="row">
+                        <div  class="col-md-6">
+                        <p style="font-size:30px;color:#341a79; font-family: 'Times New Roman'">Post Graduation</p></div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">PostGraduation IN</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.PostGraduation_IN }}" name="PostGraduation_IN" readonly>
+                        </div>
+                      </div>
+                          <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">College Name</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.PostGraduation_name }}" name="PostGraduation_name" readonly>
+                        </div>
+                      </div>
+
+                    </div><div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="bmd-label-floating labe">Board</label>
+                            <input type="text" class="form-control labee" value="{{ Fdataa.PostGraduation_board }}" name="PostGraduation_board" readonly>
+                        </div></div>
+                          <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Percentage</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.PostGraduation_Percentage }}" name="PostGraduation_Percentage" readonly>
+                        </div></div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating labe">Passed out year</label>
+                          <input type="text" class="form-control labee" value="{{ Fdataa.PostGraduation_passed_year }}" name="PostGraduation_passed_year" readonly>
+                        </div>
+                      </div>
+                    </div>
+                    {% else %}
+                     <div class="row">
+
+                        <div  class="col-md-6">
+                        <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please Fill your PostGraduation details</h3></div>
+                    </div>
+
+                    {% endif %}
+
+
+
+<br><hr>
+
+                    <h2>Exprience</h2>
+                    {% if Fdata.years_of_experience > 0 %}
+                    <div class="row">
+ <div class="col-md-5"> <h3 class="headsub">Company Name </h3></div><div class="col-md-3"><h3 class="headcont"> {{ Fdata.exp_Company_name }}</h3></div>
+                         </div>
+
+                      <div class="row">
+ <div class="col-md-5"> <h3 class="headsub">Experince in Programming Language </h3></div><div class="col-md-3"><h3 class="headcont"> {{ Fdata.experienced_programming_langauage}}</h3></div>
+                         </div>
+   <div class="row">
+ <div class="col-md-5"> <h3 class="headsub">years of Exprience </h3></div><div class="col-md-3"><h3 class="headcont"> {{ Fdata.years_of_experience }}</h3></div>
+                         </div>
+                         {% else %}
+                     <div class="row">
+
+                        <div  class="col-md-6">
+                        <h3 class="headcont"style="color:#341a79;font-family: 'Times New Roman' ">Please Fill your Exprience details </h3></div>
+                    </div>
+
+                    {% endif %}
+                          <div class="row" style=" float:right;margin-right:50px;">
+
+                         
+                          <a href="del_user" class="btn-link" style="color:red;font-size:20px;">Delete Your account</a>
+                        </div>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+          <!-- your footer here -->
+        </div>
+      </footer>
+    </div>
+  </div>
+    {% endif %}
+{% endblock %}

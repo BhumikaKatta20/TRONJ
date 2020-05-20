@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block bodddy %}
+
+<body style="background-image: url( {% static 'app/images/PL4.jpg'%});background-size: cover;">
+  {% endblock %}
+{% block content %}
+<div class="jumbotron"  style="background-color:transparent;background-size: cover;margin-left:5%;margin-right:5%;margin-top:80px;padding:40px 20px 20px 20px;height:800px;" >
+
+  <form method="get" action="updatee">
+    <div style="background-color:transparent;float:left;margin-left:5%;padding-top:10px;">
+            <br><br>
+            <div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+    <div style="float:left;font-size:30px; font-family: 'Baskerville Old Face';width:500px;">Employee name:<div style="width:100px;float:right;">
+        <input class="btn-outline-dark btn-lg" style="border-color: darkmagenta;" type="textbox" name="CEmail" value="{{c.Employee}}" readonly>
+
+    </div></div>
+    
+         </div><br>
+
+         <div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+    <div style="float:left;font-size:30px; font-family: 'Baskerville Old Face';width:500px;">Application number:
+      <div style="width:100px;float:right;">
+        <input class="btn-outline-dark btn-lg" style="border-color: darkmagenta;" type="textbox" name="id" value="{{c.id}}" readonly>
+
+    </div>
+      </div>
+    
+         </div><br>
+              <div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+    <div style="float:left;font-size:30px; font-family: 'Baskerville Old Face';width:500px;">Employee Email ID:<div style="width:100px;float:right;">
+        <input class="btn-outline-dark btn-lg" style="border-color: darkmagenta;" type="textbox" name="Emp_email" value="{{c.Employee_email}}" readonly>
+
+    </div></div>
+    
+         </div><br>
+
+            <div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+                 <div style="float:left;font-size:30px; font-family: 'Baskerville Old Face';width:500px;">Application Status:<div style="width:90px;float:right;">
+
+                  <select class="btn-outline-dark btn-lg" name="sta">
+                      <option value="Applied">Applied</option>
+                      <option value="Under_Review">Under review</option>
+                      <option value="Selected">Select</option>
+
+                      <option value="Not_Selected">Not Selected</option>
+                  </select></div></div></div>
+                  <div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+    <div style="float:left;font-size:30px; font-family: 'Baskerville Old Face';width:500px;">Information<div style="width:100px;float:right;">
+      <textarea class="input-lg" rows="8" cols="88" style="font-size: 19px;padding:10px 10px 10px 10px;border-radius: 15px;" name="info"></textarea>
+        
+    </div></div>
+    
+         </div><br>
+<div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+                  <div style="float:left;font-size:30px; font-family: 'Baskerville Old Face';margin-top:10px;">
+                      <p style="font-size:30px;color:black;" >1.{{ c.Question1 }}</p>
+                  <div ><p style="font-size:20px;font-family:'Baskerville Old Face';color: #2a2a2a;">{{ c.Answer1 }}</p>
+                     </div>
+                  </div><hr>
+                </div>
+                <div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+             <div style="float:left;font-size:30px;font-family: 'Baskerville Old Face';margin-top:10px;">
+                      <p style="font-size:30px;color:black;" >2.{{ c.Question2 }}</p>
+                  <div ><p style="font-size:20px;font-family:'Baskerville Old Face';color: #2a2a2a;">{{ c.Answer2 }}</p>
+                     </div>
+                  </div><hr></div>
+                  <div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+             <div style="float:left;font-size:30px;font-family: 'Baskerville Old Face';margin-top:10px;">
+                      <p style="font-size:30px;color:black;" >3.{{ c.Question3 }}</p>
+                  <div ><p style="font-size:20px;font-family:'Baskerville Old Face';color: #2a2a2a;">{{ c.Answer3 }}</p>
+                     </div>
+                  </div></div>
+        </div>
+    
+            </div><br>
+ <div class="container form-check-inline" style="margin:10px 10px 10px 10px;">
+
+    <div style="width:100px;float:right;">
+                <button class="btn-primary btn-lg">Submit</button>
+        <!--a href="{% url 'updatee' id=c.id %}" type="submit" class="btn btn-primary py-2">submit</a-->
+                 </div>
+            </div>
+        
+    </div>
+      
+    </form>
+<div class="jumbotron" style="margin:20px 20px 20px 20px;background-color:transparent;background-size: cover;height:700px;"></div>
+</div>
+{% endblock %}

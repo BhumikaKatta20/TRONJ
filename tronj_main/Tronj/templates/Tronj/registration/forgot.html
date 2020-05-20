@@ -1,0 +1,60 @@
+
+    {% extends 'index.html' %}
+
+{% load staticfiles %}
+
+    <title>TRONJ-My Account</title>
+{% load crispy_forms_tags %}
+{% block head %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/sub/Profile.css' %}" />
+
+   <style>
+       .nav_iconn{
+           color: white;
+           font-size:25px;
+           font-family: "Baskerville Old Face";
+            padding:10px 10px 10px 10px;
+       }
+   </style>
+{% endblock %}
+<!-- ***** Header Area Start ***** -->
+{% if user.is_authenticated %}
+ {% else %}
+
+{% block content %}
+<br><br><br><br><br><br><br><br>
+<div class="content" style="margin-top:10px;margin-left:18%;margin-right:18%; ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11">
+              <div class="card">
+                <div class="card-header card-header-primary" >
+                  <h4 class="card-title" >Fill The Answers</h4>
+                  <p class="card-category"></p>
+                </div>
+                <div class="card-body" style="padding-left:10%;">
+                  <form action="femail_verify" method="GET">
+
+  {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating" style="font-size:20px;">Enter the user name</label>
+                          <input type="text" class="form-control" name="username" >
+                            <div style="color:red;font-size:18px;margin-top:20px;">{{ errormsg }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type='submit' class="btn btn-primary btn-lg pull-right" style="font-size:20px;">Send</button>
+                    <div class="clearfix"></div>
+                        </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        {% endblock %}
+{% endif %}

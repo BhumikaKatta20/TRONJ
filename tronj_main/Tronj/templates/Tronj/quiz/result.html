@@ -1,0 +1,122 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block bodddy %}
+<body style="background-image: url({% static 'app/images/back3.jpg'%});background-size: cover;">
+{% endblock %}
+{% block content%}
+    <div class="content" style="margin-top:150px;margin-left:8%; height:70%;margin-bottom:5%; padding-bottom:1%;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-11 col-lg-11 col-sm-11">
+              <div class="card">
+
+                <div class="card-body">
+
+
+
+                      <center><h2 style="font-family: 'Cooper Black';color: mediumblue;font-size: 60px;">Skill board</h2></center>
+
+
+                    <div class="row" style="margin-top:10px;margin-bottom: 10px;">
+                        <div class="col-md-1 col-sm-1 col-md-1"></div>
+                          <div class="col-md-3  col-sm-3 col-md-3">
+                        <div class="form-group">
+                          <h4 style="color:#5F0202 ;">Python</h4>
+
+                        </div>
+                          </div>
+                        <div class="col-md-2 col-sm-2 col-md-2">
+                        <div class="form-group">
+                            <h4>{{ Fdat.python }}</h4>
+                        </div>
+                          </div>
+                              <div class="col-md-2 col-sm-2 col-md-2">
+                        <div class="form-group">
+                          <h4 style="color:#5F0202 ;">C</h4>
+                        </div>
+                              </div>
+                    <div class="col-md-3 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <h4>{{ Fdat.C }}</h4>
+                        </div>
+                              </div>
+                    </div>
+                          <div class="row" style="margin-top:10px;margin-bottom: 10px;">
+                               <div class="col-md-1 col-sm-1 col-md-1"></div>
+                          <div class="col-md-3  col-sm-3 col-md-3">
+                        <div class="form-group">
+                          <h4 style="color:#5F0202 ;">Java</h4>
+                        </div></div>
+                               <div class="col-md-2  col-sm-2 col-md-2">
+                        <div class="form-group">
+                            <h4>{{ Fdat.java }}</h4>
+                        </div></div>
+                              <div class="col-md-2 col-sm-2 col-md-2">
+                        <div class="form-group">
+                          <h4 style="color:#5F0202 ;">C++</h4>
+                        </div>
+                              </div>
+                           <div class="col-md-3 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <h4>{{ Fdat.Cadvance }}</h4>
+                        </div>
+                              </div></div>
+                                <div class="row" style="margin-top:10px;margin-bottom: 10px;">
+                                    <div class="col-md-1 col-sm-1 col-md-1"></div>
+                          <div class="col-md-3  col-sm-3 col-md-3">
+                        <div class="form-group">
+                          <h4 style="color:#5F0202 ;">Web Development</h4>
+                        </div></div>
+                                    <div class="col-md-2 col-sm-2 col-md-2">
+                        <div class="form-group">
+                            <h4>{{ Fdat.web }}</h4>
+                        </div></div>
+                              <div class="col-md-2 col-sm-2 col-md-2">
+                        <div class="form-group">
+                          <h4 style="color:#5F0202 ;">PHP</h4>
+                        </div>
+                              </div>  <div class="col-md-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <h4>{{ Fdat.PHP }}</h4>
+                        </div>
+                              </div>
+                                </div>
+                        <div class="row" style="margin-top:10px;margin-bottom: 10px;">
+                             <div class="col-md-1 col-sm-1 col-md-1"></div>
+                          <div class="col-md-3  col-sm-3 col-md-3">
+                        <div class="form-group">
+                          <h4 style="color:#5F0202 ;">.Net Framework</h4>
+                        </div>
+                      </div>
+                             <div class="col-md-2 col-sm-2 col-md-2">
+                        <div class="form-group">
+                            <h4>{{ Fdat.netframe }}</h4>
+                        </div>
+                      </div>
+
+                          <div class="col-md-2 col-sm-2 col-md-2">
+                        <div class="form-group">
+                          <h4 style="color:#5F0202 ;">C#</h4>
+
+                        </div>
+                      </div>
+                             <div class="col-md-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <h4>{{ Fdat.Csharp }}</h4>
+                        </div>
+                      </div>
+                        </div>
+
+                      <div class="row">
+                          <h3 style="margin-left:25%;">  You have scored {{scored}}</h3>
+                      </div>
+<br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+{% endblock %}

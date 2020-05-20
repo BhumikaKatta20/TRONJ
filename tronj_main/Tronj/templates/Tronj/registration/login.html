@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block body %}
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/sub/login.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/util.css' %}" />
+    {% endblock %}
+{% block head %}
+         <title>TRONJ-Login</title>
+{% endblock %}
+  {% block bodddy %}
+<body style="background-image: url({% static 'app/images/PL4.jpg'%});background-size: cover;">
+{% endblock %}
+{% block content %}
+    <br><br>
+<br>
+
+<div class="limiter">
+    <div class="container-login100" style="background:transparent;">
+      <div class="wrap-login100">
+        <div class="login100-form-title" style="background-image:url({% static 'app/images/PL5.jpg'%});padding:5px 10px 5px 10px;">
+                    <img src="{% static 'app/images/WLogo.jpg'%}">
+                    <h2 style="color: white;font-size:30px;font-family: Blackboard;">TRONJ</h2>
+        </div>
+
+        <form class="login100-form validate-form" style="background-image:url({% static 'app/images/PL3.jpg'%});background-size:cover;" method="POST">
+            <center style="color:#660033;font-family: Cooper Black;font-size:25px;padding-left:20%;">
+            Sign In
+
+          </center>
+            {% csrf_token %}
+                    <div class=" input100 validate-input " data-validate="Username is required" style="font-size:20px;">
+                        <br>
+                        {{form|crispy}}
+                        <br>
+                    </div>
+            <div>
+              <a href="{% url 'forgot' %}" class="txt1">
+                Forgot Password?
+              </a>
+                <div class="container-login100-form-btn">
+                <button class="btn btn--radius btn-primary" style="float:right;width:100px;heigth:40px;font-size:18px;margin-left:20%;" type="submit">Submit</button>
+            </div>
+            </div>
+
+          </div>
+
+
+            <!--{% for field in form %}-->
+
+                        <!--span class="label-input100">{{ field }}</span>
+
+            <span class="label-input100">{{ field }}</span>
+            {{ field.label_tag }}
+
+            span style="color: darksalmon;font-size:20px;font-family: 'Microsoft Himalaya';">{{ field.errors }}</span-->
+
+                    <!--{% endfor %}-->
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock%}

@@ -1,0 +1,57 @@
+{% extends 'Tronj/myAccount.html' %}
+{% load staticfiles %}
+  {% block bodddy %}
+<body style="background-image: url({% static 'app/images/back10.jpg'%});background-size: cover;">
+{% endblock %}
+{% block head %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/sub/edit.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/table_related/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'app/content/Drone/table_related/util.css' %}" />
+  <style>
+      .table_col{
+  width:200px;}
+  </style>
+{% endblock %}
+{% block content%}
+
+
+{% if user.is_staff %}
+
+    <h1 style="color: aliceblue; font-family: 'Baskerville Old Face';"> The contents are hidden </h1>
+  {% elif user.is_authenticated%}
+
+<div class="header"><h3 style="color: aliceblue;font-size:25px; font-family: 'Cooper Black';"><u>Your Applications</u></h3></div>
+  <div class="container">
+<div class="row" style="font-size: 20px;font-family: 'Baskerville Old Face';color:whitesmoke;padding:10px 10px 10px 10px;width:1700px;">
+
+    <div style="width:100px" class="table_col">ID</div>
+    <div class="table_col">Company</div>
+    <div class="table_col">Skill</div>
+    <div class="table_col">Salary/Sripend</div>
+    <div class="table_col">Status</div>
+</div>
+
+<div class="contanier" style="height:350px;margin-bottom:10%;overflow-x: hidden;overflow-y: auto; width:1700px;">
+     {% for company in Cdata %}
+      <div class="row" style="font-size: 18px;font-family: 'Baskerville Old Face';color:whitesmoke;padding:10px 10px 10px 10px;width:1700px;">
+
+        <div class="table_col">{{company.id}}</div>
+        <div class="table_col">{{company.company}}</div>
+        <div class="table_col">{{company.Skills_Required}}</div>
+        <div class="table_col">{{company.stipend}}</div>
+        <div class="table_col">{{company.status}}</div>
+    </div>
+      {%  endfor %}
+</div>
+            </tbody>
+</div>
+
+            {% else %}
+
+      <br><br><br><br>
+
+      {% endif %}
+
+
+{% endblock %}
